@@ -1,0 +1,51 @@
+message,response
+What is Python?,"Python is a high-level, interpreted programming language known for its easy-to-read syntax and dynamic typing."
+What is PEP 8?,PEP 8 is the Python Enhancement Proposal which outlines the style guide for writing Python code.
+What are Python decorators?,Decorators are a way to modify or enhance the behavior of functions or methods without changing their actual code.
+Explain Python's Global Interpreter Lock (GIL).,"The GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecode simultaneously."
+What is the difference between a list and a tuple in Python?,"Lists are mutable, meaning they can be changed after creation, while tuples are immutable and cannot be altered."
+What is a lambda function in Python?,A lambda function is an anonymous function expressed as a single statement.
+What is the use of the 'self' keyword in Python?,'self' represents the instance of the class and is used to access variables and methods associated with the class.
+Explain the concept of list comprehensions in Python.,List comprehensions provide a concise way to create lists by iterating over an iterable and optionally applying a condition.
+What are Python's built-in data types?,"Python's built-in data types include integers, floats, strings, lists, tuples, dictionaries, and sets."
+What is the purpose of the 'pass' statement in Python?,The 'pass' statement is a null operation; it is used when a statement is syntactically required but you don't want to execute any code.
+What is the difference between '==' and 'is' in Python?,"'==' checks for value equality, while 'is' checks for object identity."
+Explain the use of the 'with' statement in Python.,The 'with' statement simplifies exception handling by encapsulating standard try-except-finally blocks in a reusable context.
+What are generators in Python?,"Generators are iterators that produce items one at a time and only when required, using the 'yield' statement."
+What is a Python module?,A module is a file containing Python definitions and statements intended for use in other Python programs.
+What is the difference between Python 2 and Python 3?,"Python 3 introduced many new features and optimizations, including print as a function, integer division, and Unicode string by default."
+Explain the concept of exception handling in Python.,Exception handling in Python uses the try-except block to catch and handle errors gracefully.
+What is a Python package?,A package is a way of organizing related Python modules into a directory hierarchy.
+What is the purpose of the '__init__.py' file?,'__init__.py' is used to mark a directory as a Python package and can include initialization code for the package.
+What is the difference between a shallow copy and a deep copy?,"A shallow copy creates a new object but inserts references into it to the objects found in the original, while a deep copy creates a new object and recursively copies all objects found in the original."
+What is a Python virtual environment?,A virtual environment is an isolated environment that allows you to manage dependencies separately from the global Python installation.
+What is the use of the 'dir()' function?,'dir()' returns a list of attributes and methods belonging to an object or module.
+What are *args and **kwargs in Python?,*args and **kwargs allow you to pass a variable number of arguments to a function.
+Explain the concept of duck typing in Python.,"Duck typing is a concept in Python where the type or class of an object is less important than the methods it defines. If it looks like a duck and quacks like a duck, it’s treated as a duck."
+What is the purpose of the 'super()' function?,"'super()' is used to call a method from the parent class in a subclass, particularly in the context of multiple inheritance."
+What are list slicing and negative indexing?,"List slicing is used to extract parts of a list, while negative indexing allows you to access elements from the end of a list."
+What is the purpose of the 'map()' function?,The 'map()' function applies a given function to all items in an input list.
+What is the difference between 'return' and 'yield' in Python?,"'return' sends a value back to the caller and exits the function, while 'yield' returns a generator that can be iterated over."
+Explain the use of Python's 'enumerate()' function.,"'enumerate()' adds a counter to an iterable and returns it as an enumerate object, which can be used in loops."
+What is the use of the 'zip()' function?,'zip()' is used to combine two or more iterables into a single iterable of tuples.
+What is a Python dictionary?,"A dictionary is an unordered collection of key-value pairs, where keys must be unique and immutable."
+What is the purpose of the 'reduce()' function?,'reduce()' applies a rolling computation to sequential pairs of values in a list.
+What is the use of Python's 'filter()' function?,'filter()' is used to create a list of elements for which a function returns true.
+What is the difference between 'pop()' and 'remove()' methods in Python?,"'pop()' removes an element at a given index and returns it, while 'remove()' removes the first matching element (by value) and does not return it."
+"What is the use of 'try', 'except', 'else', and 'finally' in Python?",These are used in exception handling to execute different blocks of code depending on whether an exception occurred.
+What is the purpose of Python's 're' module?,The 're' module provides support for regular expressions in Python.
+What are Python's 'iter()' and 'next()' functions?,"'iter()' returns an iterator object, and 'next()' retrieves the next item from the iterator."
+"What is the difference between 'local', 'global', and 'nonlocal' variables?","Local variables are defined within a function, global variables are defined at the top-level of a script or module, and nonlocal variables are used in nested functions to refer to variables defined in the nearest enclosing scope."
+What is the purpose of the 'assert' statement?,'assert' is used for debugging purposes; it tests a condition and triggers an error if the condition is false.
+What is the difference between a method and a function in Python?,"A method is a function that is associated with an object, while a function is a standalone block of code that performs a specific task."
+What is the 'None' keyword used for in Python?,'None' is a special constant in Python representing the absence of a value or a null value.
+What are Python's 'staticmethod' and 'classmethod'?,"'staticmethod' defines a method that doesn't require access to the instance or class, while 'classmethod' requires a reference to the class object as the first parameter."
+What is a list comprehension?,A list comprehension is a syntactic construct for creating a list based on existing iterables.
+Explain Python's garbage collection mechanism.,Python's garbage collection mechanism automatically manages memory by deallocating objects that are no longer in use.
+What is the difference between '==' and 'is' in Python?,"'==' checks if the values of two objects are equal, while 'is' checks if two objects are actually the same object in memory."
+What is the purpose of the 'global' keyword in Python?,The 'global' keyword allows you to modify a variable outside of the current scope.
+What is a Python generator?,A generator is a function that returns an iterator that yields a series of values one at a time.
+What is the 'nonlocal' keyword used for in Python?,'nonlocal' is used in nested functions to indicate that a variable is not local to the function but is defined in an enclosing scope.
+What is the difference between 'deepcopy' and 'shallowcopy'?,"A 'shallowcopy' creates a new object but inserts references into it to the objects found in the original, while a 'deepcopy' creates a new object and recursively copies all objects found in the original."
+What is Python's 'set' data type?,A 'set' is an unordered collection of unique elements.
+Explain the use of the 'del' statement.,"The 'del' statement is used to delete objects in Python, such as variables, list elements, or dictionary entries."

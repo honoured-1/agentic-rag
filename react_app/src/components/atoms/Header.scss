@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.1rem 1rem;
+  background-color: black;
+  border: 2px solid #FF2E63;
+  color: white;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: center;
+
+    h1 {
+      margin-left: 0.5rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  .header-right {
+    .history-button {
+      background-color: blue;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+
+      &:hover {
+        background-color: black; // Change this to your desired hover color
+      }
+    }
+  }
+
+  .robot-icon {
+    margin-right: 0.5rem;
+    height: 1.2rem;
+    color: greenyellow;
+  }
+}

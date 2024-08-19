@@ -1,0 +1,15 @@
+client_ip,message,response,feedback,duration,last_user_message,emotion
+127.0.0.1,do you know what are variables,"In Python, a variable is like a named container that holds a value. You can think of it as a label you attach to a piece of data. For example:
+
+```python
+name = ""Alice""
+age = 30
+```
+
+Here, `name` and `age` are variables. They store the values ""Alice"" and 30 respectively.  
+
+You can use variables to store different types of data, like numbers, text, lists, or even more complex objects.  
+",neutral,6.263608932495117,do you know what are variables,neutral
+127.0.0.1,can you tell me what i asked erlier,"You asked: ""do you know what are variables""",neutral,6.126004695892334,can you tell me what i asked erlier,neutral
+127.0.0.1,good,"Good! How can I help you today? 😊 
+",neutral,4.699317216873169,good,positive

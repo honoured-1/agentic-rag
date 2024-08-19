@@ -1,0 +1,60 @@
+.chat-message {
+  max-width: 90%;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  // overflow: hidden;
+  &.user-message {
+    align-self: flex-end;
+    color: white;
+    background-color: #252A34;
+    text-align: right;
+    border-radius: 12px 12px 0 12px;
+    margin-right: 1rem;
+  }
+  &.ai-message {
+    align-self: flex-start;
+    color: whitesmoke;
+    background-color: black;
+    text-align: left;
+    border-radius: 12px 12px 12px 0;
+    margin-left: 1rem;
+  }
+  .message-content {
+    padding: 0rem 1rem 0rem 1rem;
+    border-radius: 0.5rem;
+  }
+  .feedback-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+    background-color: black;
+  }
+  .feedback-buttons {
+    display: flex;
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+    .thumbs-up {
+      color: greenyellow;
+    }
+    .thumbs-down {
+      color: greenyellow;
+    }
+  }
+  .copy-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+}
