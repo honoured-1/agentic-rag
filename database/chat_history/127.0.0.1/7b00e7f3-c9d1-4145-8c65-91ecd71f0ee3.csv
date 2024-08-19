@@ -1,0 +1,50 @@
+client_ip,message,response,feedback,duration,last_user_message,emotion
+127.0.0.1,hello,"Hello there! 👋 How can I help you today? 😊 
+",neutral,4.7257239818573,hello,neutral
+127.0.0.1,tell me about python,"Python is a popular and versatile programming language known for its readability and ease of use. It's often used for web development, data analysis, scientific computing, and more. 
+",neutral,7.032924175262451,tell me about python,neutral
+127.0.0.1,generate a code to add two number,"```python
+def add_numbers(num1, num2):
+  """"""
+  This function adds two numbers together.
+
+  Args:
+    num1: The first number.
+    num2: The second number.
+
+  Returns:
+    The sum of the two numbers.
+  """"""
+
+  # Check if the inputs are valid numbers
+  if not isinstance(num1, (int, float)) or not isinstance(num2, (int, float)):
+    raise TypeError(""Inputs must be numbers."")
+
+  # Calculate the sum
+  sum = num1 + num2
+  return sum
+
+# Example usage
+try:
+  result = add_numbers(5, 3.14)
+  print(f""The sum is: {result}"")
+except TypeError as e:
+  print(f""Error: {e}"")
+```
+
+**Explanation:**
+
+1. **Function Definition:** The code defines a function called `add_numbers` that takes two arguments, `num1` and `num2`, representing the numbers to be added.
+2. **Docstring:** The function includes a docstring that explains its purpose, input parameters, and return value. This is a crucial part of writing well-documented code.
+3. **Type Checking:** The code uses `isinstance` to check if the input arguments are numbers (integers or floats). If not, it raises a `TypeError` to indicate that the inputs are invalid.
+4. **Calculation:** The function calculates the sum of `num1` and `num2` and stores it in the `sum` variable.
+5. **Return Value:** The function returns the calculated sum.
+6. **Example Usage:** The code includes an example of how to use the `add_numbers` function. It tries to add 5 and 3.14, and prints the result. If there is a type error, it catches the exception and prints an error message.
+
+This code demonstrates best practices by:
+
+* Using a descriptive function name (`add_numbers`) and meaningful variable names (`num1`, `num2`, `sum`).
+* Adhering to PEP 8 style guidelines (e.g., using spaces around operators).
+* Including error handling to make the code robust.
+* Defining a modular function to improve code organization.
+",neutral,29.775474309921265,generate a code to add two number,neutral

@@ -1,0 +1,4 @@
+client_ip,message,response,feedback,duration,last_user_message,emotion
+127.0.0.1,hi,"Hi there! 👋 How can I help you today? 
+",negative,8.571351289749146,hi,neutral
+127.0.0.1,kem cho,"I am trained only on Python, so I cannot answer that question. Is there anything else I can help you with related to Python?",neutral,8.773947715759277,kem cho,neutral

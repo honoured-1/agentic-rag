@@ -1,0 +1,3 @@
+client_ip,message,response,feedback,duration,last_user_message,emotion
+127.0.0.1,hi,"Hi there! 👋 How can I help you today? 😊 
+",neutral,4.730411529541016,hi,neutral
