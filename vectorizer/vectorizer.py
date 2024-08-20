@@ -8,9 +8,6 @@ from geminiembed import embeddings #type: ignore
 input_file = 'database/APIs.txt'
 documents = markdown_splitter(input_file)
 
-# Debug: Print the type and content of documents
-# print(f"Type of documents: {type(documents)}")
-# print(f"Content of documents: {documents}")
 
 faissDIR = "vectordb"
 
@@ -27,9 +24,49 @@ else:
 
 
 
-# # Access and print specific splits by their index
-# index_to_print = 0  # Change this to the index you want to print
-# if 0 <= index_to_print < len(documents):
-#     print(documents[index_to_print])
-# else:
-#     print("Index out of range")
+# import sys, os, time, getpass
+# sys.path.append('models')
+# from splitter import markdown_splitter
+# from langchain_pinecone import PineconeVectorStore
+# from geminiembed import embeddings #type: ignore
+# import getpass
+# from dotenv import load_dotenv
+# from pinecone import Pinecone, ServerlessSpec
+# from uuid import uuid4
+ 
+# load_dotenv()
+# if not os.getenv("PINECONE_API_KEY"):
+#     os.environ["PINECONE_API_KEY"] = getpass.getpass("Enter your Pinecone API key: ")
+ 
+# pinecone_api_key = os.environ.get("PINECONE_API_KEY")
+ 
+# pc = Pinecone(api_key=pinecone_api_key)
+ 
+ 
+# index_name = "python-db"  # change if desired
+ 
+# existing_indexes = [index_info["name"] for index_info in pc.list_indexes()]
+ 
+# if index_name not in existing_indexes:
+#     pc.create_index(
+#         name=index_name,
+#         dimension=768,
+#         metric="cosine",
+#         spec=ServerlessSpec(cloud="aws", region="us-east-1"),
+#     )
+#     while not pc.describe_index(index_name).status["ready"]:
+#         time.sleep(1)
+ 
+# index = pc.Index(index_name)
+ 
+# input_file = 'database/APIs.txt'
+# documents = markdown_splitter(input_file)
+ 
+ 
+# # index = pc.Index(index_name)
+# embedding_model = embeddings()
+# vector_store = PineconeVectorStore(index=index, embedding=embedding_model)
+ 
+# uuids = [str(uuid4()) for _ in range(len(documents))]
+ 
+# vector_store.add_documents(documents=documents, ids=uuids)

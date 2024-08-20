@@ -1,0 +1,5 @@
+client_ip,message,response,feedback,duration,last_user_message,emotion
+127.0.0.1,hello,"Hello there! 👋 How can I help you today? 
+",neutral,6.047127962112427,hello,neutral
+127.0.0.1,what is python,"Python is a versatile and popular programming language known for its readability and ease of use. It's widely used in various fields, including web development, data science, scripting, and more. 
+",neutral,9.412166357040405,what is python,neutral

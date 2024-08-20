@@ -13,3 +13,31 @@ You can use variables to store different types of data, like numbers, text, list
 127.0.0.1,can you tell me what i asked erlier,"You asked: ""do you know what are variables""",neutral,6.126004695892334,can you tell me what i asked erlier,neutral
 127.0.0.1,good,"Good! How can I help you today? 😊 
 ",neutral,4.699317216873169,good,positive
+127.0.0.1,generate python to add two number,"```python
+def add_numbers(num1, num2):
+  """"""
+  This function adds two numbers together.
+
+  Args:
+    num1: The first number to add.
+    num2: The second number to add.
+
+  Returns:
+    The sum of the two numbers.
+  """"""
+
+  # Check if the inputs are valid numbers
+  if not isinstance(num1, (int, float)) or not isinstance(num2, (int, float)):
+    raise TypeError(""Inputs must be numbers."")
+
+  # Add the two numbers
+  sum = num1 + num2
+
+  # Return the sum
+  return sum
+
+# Example usage
+result = add_numbers(5, 3)
+print(f""The sum is: {result}"")
+```
+",neutral,5.689442873001099,generate python to add two number,neutral

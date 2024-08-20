@@ -1,3 +1,30 @@
 client_ip,message,response,feedback,duration,last_user_message,emotion
 127.0.0.1,hi,"Hi there! 👋 How can I help you today? 😊 
 ",neutral,4.730411529541016,hi,neutral
+127.0.0.1,helo,"Hello! 👋 How can I help you today? 
+",neutral,5.308831214904785,helo,neutral
+127.0.0.1,what are you,I am a large language model trained to be informative and,neutral,3.0431532859802246,what are you,neutral
+127.0.0.1,what is python,"Python is a popular, high-level programming language known for its readability and versatility. It's used in a wide range of applications, from web development and data analysis to scripting and automation. 
+",neutral,7.981497287750244,what is python,neutral
+127.0.0.1,what are variable,"In Python, a variable is a name that you use to refer to a value. Think of it like a label you attach to a piece of information. You can assign different values to a variable throughout your program, and Python will always remember what the latest value is. 
+",neutral,7.606004476547241,what are variable,neutral
+127.0.0.1,what are datatypes,"Data types in Python define the kind of data a variable can hold. Python has several built-in data types, including:
+
+* **Numeric types:**
+    * **int:** Integers (whole numbers) like 10, -5, 0.
+    * **float:** Floating-point numbers (numbers with decimal points) like 3.14, -2.5.
+    * **complex:** Complex numbers (numbers with real and imaginary parts) like 2+3j.
+* **Text type:**
+    * **str:** Strings, which are sequences of characters enclosed in single or double quotes, like ""Hello"" or 'world'.
+* **Boolean type:**
+    * **bool:** Represents truth values, either True or False.
+* **Sequence types:**
+    * **list:** Mutable ordered collections of items, allowing duplicates.
+    * **tuple:** Immutable ordered collections of items, allowing duplicates.
+* **Mapping type:**
+    * **dict:** Key-value pairs, allowing fast lookups based on keys.
+* **Set type:**
+    * **set:** Unordered collections of unique items.
+
+These data types allow you to represent and manipulate different kinds of information in your Python programs. 
+",neutral,9.954573154449463,what are datatypes,neutral

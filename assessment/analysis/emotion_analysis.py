@@ -1,84 +1,52 @@
-import os, csv, schedule, time
+import os, schedule, time
 from textblob import TextBlob
-# from transformers import pipeline
+import motor.motor_asyncio
+from dotenv import load_dotenv
 
-# Disable SSL verification
-os.environ['CURL_CA_BUNDLE'] = ''
+# Load environment variables from .env file
+load_dotenv()
 
-# Initialize the emotion detection pipeline
-# emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None, use_auth_token=False, trust_remote_code=True)
+# MongoDB client setup
+MONGODB_CONNECTION_STRING = os.getenv("MONGODB_CONNECTION_STRING")
+client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_CONNECTION_STRING)
+db = client.chatbot
+chat_collection = db.chat_history
 
-def analyze_emotions(base_directory="database/chat_history"):
-    print(f"Starting emotion analysis in directory: {base_directory}")
-    for root, dirs, files in os.walk(base_directory):
-        for file in files:
-            if file.endswith(".csv"):
-                file_path = os.path.join(root, file)
-                print(f"Analyzing file: {file_path}")
-                analyze_emotions_in_file(file_path)
+async def analyze_emotions():
+    print("Starting emotion analysis in MongoDB")
+    async for document in chat_collection.find():
+        await analyze_emotions_in_document(document)
 
-def analyze_emotions_in_file(file_path):
-    rows = []
+async def analyze_emotions_in_document(document):
     updated = False
+    message = document.get("message", "")
+    emotion = document.get("emotion", None)
 
-    try:
-        # Read the existing rows
-        with open(file_path, mode='r', newline='', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            header = next(reader)
-            rows = list(reader)
-
-        # Check if the emotion column exists
-        if "emotion" not in header:
-            header.append("emotion")
+    if not emotion:
+        print(f"Analyzing message: {message}")
+        try:
+            blob = TextBlob(message)
+            sentiment = blob.sentiment
+            emotion = "positive" if sentiment.polarity > 0 else "negative" if sentiment.polarity < 0 else "neutral"
+            await chat_collection.update_one(
+                {"_id": document["_id"]},
+                {"$set": {"emotion": emotion}}
+            )
             updated = True
-            print(f"Added 'emotion' column to header in file: {file_path}")
+        except Exception as e:
+            print(f"Skipping message due to error: {e}")
+    else:
+        print(f"Skipping message: {message} (already analyzed)")
 
-        # Analyze emotions for each message
-        # for row in rows:
-        #     if len(row) < len(header):  # If the emotion column is missing
-        #         message = row[1]
-        #         print(f"Analyzing message: {message}")
-        #         try:
-        #             emotions = emotion_classifier(message)
-        #             dominant_emotion = max(emotions[0], key=lambda x: x['score'])['label']
-        #             row.append(dominant_emotion)
-        #             updated = True
-        #         except RuntimeError as e:
-        #             print(f"Skipping message due to error: {e}")
-        #     else:
-        #         print(f"Skipping message: {row[1]} (already analyzed)")
-        for row in rows:
-            if len(row) < len(header):  # If the emotion column is missing
-                message = row[1]
-                print(f"Analyzing message: {message}")
-                try:
-                    blob = TextBlob(message)
-                    sentiment = blob.sentiment
-                    emotion = "positive" if sentiment.polarity > 0 else "negative" if sentiment.polarity < 0 else "neutral"
-                    row.append(emotion)
-                    updated = True
-                except Exception as e:
-                    print(f"Skipping message due to error: {e}")
-            else:
-                print(f"Skipping message: {row[1]} (already analyzed)")
-
-        # Write the updated rows back to the file if there were any updates
-        if updated:
-            with open(file_path, mode='w', newline='', encoding='utf-8') as file:
-                writer = csv.writer(file)
-                writer.writerow(header)
-                writer.writerows(rows)
-            print(f"Updated file: {file_path}")
-
-    except Exception as e:
-        print(f"Error processing file {file_path}: {e}")
+    if updated:
+        print(f"Updated document: {document['_id']}")
 
 def job():
-    analyze_emotions()
+    import asyncio
+    asyncio.run(analyze_emotions())
 
 # Schedule the job every 10 minutes
-schedule.every(10).minutes.do(job)
+schedule.every(120).minutes.do(job)
 
 if __name__ == "__main__":
     while True:
