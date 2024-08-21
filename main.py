@@ -121,8 +121,8 @@ async def get_chat_history(session_id: str, request_obj: Request):
     return {"messages": chat_history}
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
 # import uuid, csv, os, uvicorn, sys, time
