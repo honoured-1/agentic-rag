@@ -8,7 +8,7 @@ const ChatHistoryModal = ({ onClose, onSelectSession }) => {
   useEffect(() => {
     const fetchChatHistory = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/chat_history');
+        const response = await fetch('http://accurate-correy-honoured1-16c870eb.koyeb.app/api/chat_history');
         const data = await response.json();
         setPreviousChats(data.chat_history || []); // Ensure data.chat_history is defined
       } catch (error) {
