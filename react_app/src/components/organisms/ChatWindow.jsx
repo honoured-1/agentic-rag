@@ -15,7 +15,7 @@ const ChatWindow = () => {
   useEffect(() => {
     const fetchSessionId = async () => {
       try {
-        const response = await fetch('http://accurate-correy-honoured1-16c870eb.koyeb.app/api/new_session');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/new_session`);
         const data = await response.json();
         setSessionId(data.session_id);
       } catch (error) {
@@ -36,7 +36,7 @@ const ChatWindow = () => {
   const fetchAIResponse = async (userMessage) => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://accurate-correy-honoured1-16c870eb.koyeb.app/api/chatbot', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/chatbot`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const ChatWindow = () => {
         response: responseText,
         feedback,
       };
-      const feedbackResponse = await fetch('https://accurate-correy-honoured1-16c870eb.koyeb.app/api/feedback', {
+      const feedbackResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const ChatWindow = () => {
 
   const fetchChatHistory = async (sessionId) => {
     try {
-      const response = await fetch(`https://accurate-correy-honoured1-16c870eb.koyeb.app/api/chat_history/${sessionId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/chat_history/${sessionId}`);
       const data = await response.json();
       console.log('Fetched chat history:', data); // Debugging log
 
