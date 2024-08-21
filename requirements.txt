@@ -5,11 +5,11 @@ langchain
 langchain-openai
 langchain-community
 pymongo
-lark
+# lark
 pydantic
 urllib3
 langchain-pinecone
 pinecone-notebooks
 langchain-google-genai
-textblob
-openpyxl
+# textblob
+# openpyxl
