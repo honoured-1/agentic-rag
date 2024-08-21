@@ -2,6 +2,7 @@ fastapi
 uvicorn
 pyyaml
 langchain
+python-dotenv
 motor
 langchain-openai
 langchain-core
