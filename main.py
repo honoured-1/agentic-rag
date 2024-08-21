@@ -2,7 +2,7 @@ import uuid, os, uvicorn, sys, time
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from agent.reactagent import answer
+from chatbot.agent.reactagent import answer
 import motor.motor_asyncio
 from dotenv import load_dotenv
 from bson import ObjectId
@@ -121,8 +121,8 @@ async def get_chat_history(session_id: str, request_obj: Request):
     return {"messages": chat_history}
 
 
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
 # import uuid, csv, os, uvicorn, sys, time

@@ -26,7 +26,7 @@ def main():
   """Starts two Python scripts simultaneously using subprocess.Popen."""
 
   # Define the paths to the scripts
-  main_script_path = "chatbot/main.py"
+  main_script_path = "main.py"
   emotion_analysis_script_path = "assessment/analysis/emotion_analysis.py"
 
   # Start the main script

@@ -1,4 +1,4 @@
-import yaml, sys, re, os
+import yaml, sys
 # from threading import Thread
 sys.path.append('models')
 sys.path.append('chatbot/rag')
