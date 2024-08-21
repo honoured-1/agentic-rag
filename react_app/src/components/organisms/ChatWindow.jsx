@@ -15,7 +15,7 @@ const ChatWindow = () => {
   useEffect(() => {
     const fetchSessionId = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/new_session');
+        const response = await fetch('http://accurate-correy-honoured1-16c870eb.koyeb.app/api/new_session');
         const data = await response.json();
         setSessionId(data.session_id);
       } catch (error) {
