@@ -2,7 +2,9 @@ fastapi
 uvicorn
 pyyaml
 langchain
+motor
 langchain-openai
+langchain-core
 langchain-community
 pymongo
 # lark
@@ -10,6 +12,7 @@ pydantic
 urllib3
 langchain-pinecone
 pinecone-notebooks
+pinecone-client
 langchain-google-genai
 # textblob
 # openpyxl
