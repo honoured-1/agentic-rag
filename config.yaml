@@ -1,4 +1,4 @@
-top_k: 7
+top_k: 5
 bert_score_lang: 'en'
 
 rag_template: |

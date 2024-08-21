@@ -41,9 +41,15 @@
     }
     .thumbs-up {
       color: greenyellow;
+      &:hover {
+        color: #FF2E63; // Change to your desired hover color
+      }
     }
     .thumbs-down {
       color: greenyellow;
+      &:hover {
+        color: #FF2E63; // Change to your desired hover color
+      }
     }
   }
   .copy-button {
