@@ -14,8 +14,12 @@ const ChatWindow = () => {
 
   useEffect(() => {
     const fetchSessionId = async () => {
+      const apiUrl = process.env.REACT_APP_DEVELOPMENT === 'true'
+        ? 'http://localhost:8000/api/new_session'
+        : `${process.env.REACT_APP_API_URL}/api/new_session`;
+
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/new_session`);
+        const response = await fetch(apiUrl);
         const data = await response.json();
         setSessionId(data.session_id);
       } catch (error) {
@@ -35,8 +39,12 @@ const ChatWindow = () => {
 
   const fetchAIResponse = async (userMessage) => {
     setIsLoading(true);
+    const apiUrl = process.env.REACT_APP_DEVELOPMENT === 'true'
+      ? 'http://localhost:8000/api/chatbot'
+      : `${process.env.REACT_APP_API_URL}/api/chatbot`;
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/chatbot`, {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,6 +83,10 @@ const ChatWindow = () => {
   };
 
   const sendFeedback = async (message, responseText, feedback) => {
+    const apiUrl = process.env.REACT_APP_DEVELOPMENT === 'true'
+      ? 'http://localhost:8000/api/feedback'
+      : `${process.env.REACT_APP_API_URL}/api/feedback`;
+
     try {
       const feedbackData = {
         session_id: sessionId,
@@ -82,7 +94,7 @@ const ChatWindow = () => {
         response: responseText,
         feedback,
       };
-      const feedbackResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/feedback`, {
+      const feedbackResponse = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -119,8 +131,12 @@ const ChatWindow = () => {
   };
 
   const fetchChatHistory = async (sessionId) => {
+    const apiUrl = process.env.REACT_APP_DEVELOPMENT === 'true'
+      ? `http://localhost:8000/api/chat_history/${sessionId}`
+      : `${process.env.REACT_APP_API_URL}/api/chat_history/${sessionId}`;
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/chat_history/${sessionId}`);
+      const response = await fetch(apiUrl);
       const data = await response.json();
       console.log('Fetched chat history:', data); // Debugging log
 

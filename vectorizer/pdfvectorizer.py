@@ -1,82 +1,93 @@
-import sys, os, time, getpass
-sys.path.append('models')
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from geminiembed import embeddings  #type: ignore
-from dotenv import load_dotenv
-from pinecone import Pinecone, ServerlessSpec
-from langchain_pinecone import PineconeVectorStore
-from uuid import uuid4
+import yaml
 
-# Load environment variables
-load_dotenv()
+# Load the config.yaml file
+with open('config.yaml', 'r') as file:
+    config = yaml.safe_load(file)
 
-# Get Pinecone API key
-if not os.getenv("PINECONE_API_KEY"):
-    os.environ["PINECONE_API_KEY"] = getpass.getpass("Enter your Pinecone API key: ")
+development = config.get('development', False)
 
-pinecone_api_key = os.environ.get("PINECONE_API_KEY")
+if development:
+    # Code to run when development is True
+    import sys
+    sys.path.append('models')
+    from langchain_community.document_loaders import PyPDFLoader
+    from langchain_community.vectorstores import FAISS
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    from geminiembed import embeddings #type: ignore
 
-# Initialize Pinecone
-pc = Pinecone(api_key=pinecone_api_key)
+    file = 'database/Learning_Python.pdf'
+    faissDIR = "vectordb"
+    loader = PyPDFLoader(file, extract_images=False)
+    data = loader.load()
 
-index_name = "python-db"  # Change if desired
+    embedding_model = embeddings()
 
-# Check if the index exists, if not, create it
-existing_indexes = [index_info["name"] for index_info in pc.list_indexes()]
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=48)
+    chunks = text_splitter.split_documents(data)
 
-if index_name not in existing_indexes:
-    pc.create_index(
-        name=index_name,
-        dimension=768,
-        metric="cosine",
-        spec=ServerlessSpec(cloud="aws", region="us-east-1"),
-    )
-    while not pc.describe_index(index_name).status["ready"]:
-        time.sleep(1)
+    # Extract text content from chunked Document objects
+    chunk_texts = [chunk.page_content for chunk in chunks]
 
-index = pc.Index(index_name)
+    vectorstore = FAISS.from_texts(chunk_texts, embedding_model)
+    vectorstore.save_local(faissDIR)
+    print("Created FAISS vectorDB")
 
-# Load and split the PDF document
-file = 'database/Learning_Python.pdf'
-loader = PyPDFLoader(file, extract_images=False)
-data = loader.load()
+else:
+    # Code to run when development is False
+    import sys, os, time, getpass
+    sys.path.append('models')
+    from langchain_community.document_loaders import PyPDFLoader
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    from geminiembed import embeddings  #type: ignore
+    from dotenv import load_dotenv
+    from pinecone import Pinecone, ServerlessSpec
+    from langchain_pinecone import PineconeVectorStore
+    from uuid import uuid4
 
-embedding_model = embeddings()  # Call the function to get the instance
+    # Load environment variables
+    load_dotenv()
 
-# Create Pinecone vector store and add documents
-vector_store = PineconeVectorStore(index=index, embedding=embedding_model)
+    # Get Pinecone API key
+    if not os.getenv("PINECONE_API_KEY"):
+        os.environ["PINECONE_API_KEY"] = getpass.getpass("Enter your Pinecone API key: ")
 
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=48)
-chunks = text_splitter.split_documents(data)
+    pinecone_api_key = os.environ.get("PINECONE_API_KEY")
 
-uuids = [str(uuid4()) for _ in range(len(chunks))]
+    # Initialize Pinecone
+    pc = Pinecone(api_key=pinecone_api_key)
 
-vector_store.add_documents(documents=chunks, ids=uuids)
+    index_name = "python-db"  # Change if desired
 
-print("Created Pinecone vectorDB")
+    # Check if the index exists, if not, create it
+    existing_indexes = [index_info["name"] for index_info in pc.list_indexes()]
 
+    if index_name not in existing_indexes:
+        pc.create_index(
+            name=index_name,
+            dimension=768,
+            metric="cosine",
+            spec=ServerlessSpec(cloud="aws", region="us-east-1"),
+        )
+        while not pc.describe_index(index_name).status["ready"]:
+            time.sleep(1)
 
-# import sys
-# sys.path.append('models')
-# from langchain_community.document_loaders import PyPDFLoader
-# from langchain_community.vectorstores import FAISS
-# from langchain.text_splitter import RecursiveCharacterTextSplitter
-# from geminiembed import embeddings #type: ignore
+    index = pc.Index(index_name)
 
-# file = 'database/Learning_Python.pdf'
-# faissDIR = "vectordb"
-# loader = PyPDFLoader(file, extract_images=False)
-# data = loader.load()
+    # Load and split the PDF document
+    file = 'database/Learning_Python.pdf'
+    loader = PyPDFLoader(file, extract_images=False)
+    data = loader.load()
 
-# embedding_model = embeddings()
+    embedding_model = embeddings()  # Call the function to get the instance
 
-# text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=48)
-# chunks = text_splitter.split_documents(data)
+    # Create Pinecone vector store and add documents
+    vector_store = PineconeVectorStore(index=index, embedding=embedding_model)
 
-# # Extract text content from chunked Document objects
-# chunk_texts = [chunk.page_content for chunk in chunks]
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=48)
+    chunks = text_splitter.split_documents(data)
 
-# vectorstore = FAISS.from_texts(chunk_texts, embedding_model)
-# vectorstore.save_local(faissDIR)
-# print("Created FAISS vectorDB")
+    uuids = [str(uuid4()) for _ in range(len(chunks))]
+
+    vector_store.add_documents(documents=chunks, ids=uuids)
+
+    print("Created Pinecone vectorDB")

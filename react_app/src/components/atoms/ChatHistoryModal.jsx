@@ -7,8 +7,12 @@ const ChatHistoryModal = ({ onClose, onSelectSession }) => {
 
   useEffect(() => {
     const fetchChatHistory = async () => {
+      const apiUrl = process.env.REACT_APP_DEVELOPMENT === 'true'
+        ? 'http://localhost:8000/api/chat_history'
+        : `${process.env.REACT_APP_API_URL}/api/chat_history`;
+
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/chat_history`);
+        const response = await fetch(apiUrl);
         const data = await response.json();
         setPreviousChats(data.chat_history || []); // Ensure data.chat_history is defined
       } catch (error) {
