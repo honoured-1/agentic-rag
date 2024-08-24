@@ -1,0 +1,9 @@
+client_ip,message,response,feedback,duration,last_user_message
+127.0.0.1,who built you,"Based on the provided information, the AI assistant was built by **Sumit Kumar**. This is evident from the document's header, which states ""Sumit Kumar Email: imsumkr@gmail.com"". The document details Sumit's background, including his education, skills, and work experience.  Therefore, it's safe to assume that he is the creator of this AI assistant. 
+",neutral,7.086345434188843,who built you
+127.0.0.1,who is sumit kumar,"Sumit Kumar is the individual who built this AI assistant.  He is a skilled full-stack engineer with experience in banking and financial services. He has a Bachelor of Technology in Computer Science and Engineering from Netaji Subhash Engineering College Kolkata.  He is proficient in various programming languages including Python, JavaScript (React.js), and SCSS. He is also knowledgeable in using LLMs such as GPT (3.5, 4, vision), Llama, and Gemini. 
+
+You can find more information about Sumit on his LinkedIn profile (linkedin.com/in/honoured1) or his Github (github.com/honoured-1). His contact information is available as well: imsumkr@gmail.com and +917439883621. 
+",neutral,5.352323770523071,who is sumit kumar
+127.0.0.1,what are his skills,"Sumit Kumar's skills include full-stack engineering, banking and financial services, Python, JavaScript (React.js), SCSS, and LLMs such as GPT (3.5, 4, vision), Llama, and Gemini.",neutral,2.9590330123901367,what are his skills
+127.0.0.1,can you elaborate more on skills,"Sumit Kumar is proficient in Python and uses it for full-stack engineering. He is also knowledgeable in using LLMs such as GPT (3.5, 4, vision), Llama, and Gemini.",neutral,3.386711835861206,can you elaborate more on skills

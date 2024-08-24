@@ -1,0 +1,67 @@
+client_ip,message,response,feedback,duration,last_user_message
+127.0.0.1,hi,"Hi there! 👋 How can I help you today? 
+",neutral,5.925954818725586,hi
+127.0.0.1,who built you,"Based on the provided documents, I am an AI assistant built by **Sumit Kumar**.  
+
+The document explicitly states:
+
+* **""Sumit Kumar Email: imsumkr@gmail.com""** 
+* **""Github: github.com/honoured-1""** 
+* **""LinkedIn: linkedin.com/in/honoured1""**
+
+This information strongly suggests that Sumit Kumar is the creator of the AI assistant. 
+
+While the documents do not explicitly state that Sumit Kumar built this specific AI assistant, the context of the documents, particularly the ""Projects"" section,  points to him as the developer. The projects described in the documents are related to AI and language models, aligning with the functionality of the AI assistant. 
+
+Therefore, it is highly probable that Sumit Kumar is the individual who built this AI assistant. 
+",neutral,6.596220016479492,who built you
+127.0.0.1,who is sumit,"Sumit Kumar is a skilled software engineer with a strong background in computer science and a passion for building innovative solutions.  Here's what we know about him based on the provided documents:
+
+**Contact Information:**
+
+* **Email:** imsumkr@gmail.com
+* **GitHub:** github.com/honoured-1
+* **Contact No:** +917439883621
+* **LinkedIn:** linkedin.com/in/honoured1
+
+**Education:**
+
+* **Bachelor of Technology - Computer Science and Engineering:** Netaji Subhash Engineering College Kolkata, India (July 2018 - June 2022) - GPA: 8.23
+* **CBSE - 12th:** New Era Public School Munger, India (March 2017) - Percentage: 74
+
+**Skills:**
+
+* **Domain:** Banking and Financial Services
+* **Languages:** Python, SCSS, JavaScript (React.js)
+* **LLMs:** GPT (3.5, 4, vision), Llama, Gemini
+* **Frameworks:** ReactJS, LangChain, LangGraph
+* **Tools:** Docker, LangSmith, GIT, Redis, Nginx, Voiceflow, OpenSSL, Sandbox
+* **Platforms:** Linux, Windows, Microsoft Azure
+* **Soft Skills:** Task Planning, Time Management, Relationship Building, Adaptability, Critical Thinking
+* **Additional Related Skills:** API Development, CI/CD Pipelines, Containerization, Reverse Proxy Configuration, Version Control (Git), Secure Certificates (SSL/TLS)
+
+**Experience:**
+
+* **Cognizant:** 
+    * **Intern - Full Stack Engineer (Full-time):** January 2022 - July 2022
+        * **Full Stack Developer:** Developed a banking website with user authentication, APIs for user validation and data storage, and seamless navigation using React Router.
+        * **Technologies:** Python, React JS, CSS, FastAPI, JWT, Git, Docker, Nginx, Azure
+
+**Projects:**
+
+* **Chatbot Project:** Developed a chatbot that achieved a user satisfaction score of 72 percent, leveraging LangChain, Python, Docker, and Redis for chat history management. The project also incorporated Elastic Vector Store, Microsoft Sentiment Analyzer, and evaluation metrics like hallucination detection and BERT-based scoring.
+* **Langchain Chain:** Created a LangChain chain to efficiently handle numerous queries on GitHub while enforcing a token limit.
+* **Hacktoberfest:** Participated in several Hacktoberfest events hosted by Digital Ocean and contributed to open-source projects.
+
+**Volunteer Experience:**
+
+* **Outreach Events - Cognizant Bangalore, India:** Participated in multiple events to teach underprivileged students. (July 2022 - Present)
+* **Phoenix - Technical Student Clubs NSEC Kolkata, India:**  (Details not provided)
+
+**Overall, Sumit Kumar appears to be a highly skilled and motivated software engineer with experience in full-stack development, chatbot development, and open-source contributions. He is proficient in various technologies, including Python, React.js, LangChain, and Docker, and has a strong interest in the banking and financial services domain.** 
+",neutral,27.65063977241516,who is sumit
+127.0.0.1,what are sumit skills,"Based on the information provided, Sumit Kumar is a skilled software engineer with expertise in full-stack development, chatbot development, and open-source contributions. He is proficient in various technologies including Python, React.js, LangChain, and Docker.",neutral,1.6392338275909424,what are sumit skills
+127.0.0.1,what is python,"Python is a versatile and popular programming language known for its readability and ease of use. It's used in a wide range of applications, from web development to data science and machine learning. 
+",neutral,7.698681116104126,what is python
+127.0.0.1,hi,"Hi there! 👋 How can I help you today? 😊 
+",neutral,7.321648120880127,hi

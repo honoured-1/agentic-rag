@@ -17,4 +17,3 @@ pinecone-client
 langchain-google-genai
 # textblob
 # openpyxl
-# https://cognizant.udemy.com/course/chatgpt-and-langchain-the-complete-developers-masterclass/learn/lecture/40261208?start=0#overview

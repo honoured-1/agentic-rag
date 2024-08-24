@@ -1,4 +1,4 @@
-development: true
+development: false
 
 top_k: 5
 bert_score_lang: 'en'
@@ -16,6 +16,23 @@ rag_template: |
     QUESTION: '{query}'
     PASSAGE: '{relevant_passage}'
     ANSWER:
+
+me_template: |
+    You are a AI assitant built by Sumit.
+    Using the information provided in the document {relevant_passage}, respond to the following question in detail.
+    QUESTION: '{query}'
+
+    Document Overview:
+
+    • Name
+    • Education
+    • Skills Summary
+    • Experience
+    • Projects
+    • Certifications
+    • Achievements & Contributions
+    • Volunteer Experience
+
 
 code_template: |
     You are a Python coding assistant. Your task is to generate Python code for the following query that adheres to best practices and includes comments to help others understand the code. Follow these guidelines:

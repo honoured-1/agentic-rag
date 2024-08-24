@@ -27,8 +27,9 @@ else:
 
     pinecone_api_key = os.environ.get("PINECONE_API_KEY")
     pc = Pinecone(api_key=pinecone_api_key)
-    index_name = "python-db"  # Change if desired
-    index = pc.Index(index_name)
+    # index_name =   # Change if desired
+    pythondb = pc.Index("python-db")
+    aboutme = pc.Index("about-me")
 
 with open('config.yaml') as config_file:
     config_file = yaml.safe_load(config_file)
@@ -39,12 +40,29 @@ top_k = config_file['top_k']
 
 def get_answer(query):
     if development:
-        load_directory = "vectordb"
+        load_directory = "vectordb/pythondb"
         vector_store = FAISS.load_local(load_directory, embeddings_model, allow_dangerous_deserialization=True)
     else:
-        vector_store = PineconeVectorStore(index=index, embedding=embeddings_model)
+        vector_store = PineconeVectorStore(index=pythondb, embedding=embeddings_model)
 
+    relevant_passage = vector_store
     template = config_file["rag_template"]
+    prompt = PromptTemplate(input_variable=["relevant_passage", "query"], template=template)
+    retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={'k': top_k})
+    retrieval = RunnableParallel({"relevant_passage": retriever, "query": RunnablePassthrough()})
+    chain = retrieval | prompt | llm | StrOutputParser()
+    response = chain.invoke(query)
+    return response
+
+def me_func(query):
+    if development:
+        load_directory = "vectordb/aboutme"
+        vector_store = FAISS.load_local(load_directory, embeddings_model, allow_dangerous_deserialization=True)
+    else:
+        vector_store = PineconeVectorStore(index=aboutme, embedding=embeddings_model)
+
+    relevant_passage = vector_store
+    template = config_file["me_template"]
     prompt = PromptTemplate(input_variable=["relevant_passage", "query"], template=template)
     retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={'k': top_k})
     retrieval = RunnableParallel({"relevant_passage": retriever, "query": RunnablePassthrough()})

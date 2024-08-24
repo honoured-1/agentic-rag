@@ -1,0 +1,9 @@
+client_ip,message,response,feedback,duration,last_user_message
+127.0.0.1,hi,"Hi there! 👋 How can I help you today? 😊 
+",neutral,6.619655609130859,hi
+127.0.0.1,who built you,"The provided documents contain information about Sumit Kumar's background, skills, and experience, but they do not mention anything about who built this bot or who its owner is. The documents only provide information about Sumit Kumar, not about the chatbot itself. 
+",neutral,6.610057830810547,who built you
+127.0.0.1,who is sumit,"Sumit Kumar is a computer science engineer with experience in banking and financial services. He has a Bachelor of Technology degree from Netaji Subhash Engineering College in Kolkata, India. He has demonstrated proficiency in various programming languages, including Python, SCSS, and JavaScript (React.js), as well as familiarity with Large Language Models (LLMs) like GPT (3.5, 4, vision), Llama, and Gemini. His experience includes working as a Full Stack Engineer Intern at Cognizant, where he developed a banking website using React.js and implemented APIs for user authentication and data storage.  He is also involved in volunteer work, teaching underprivileged students through outreach events at Cognizant. 
+
+The information provided does not mention who built this bot or who owns it. 
+",neutral,4.312626361846924,who is sumit

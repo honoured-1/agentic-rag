@@ -1,4 +1,12 @@
-import yaml
+import uuid, csv, os, uvicorn, sys, time, yaml
+sys.path.append('models')
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from chatbot.agent.reactagent import answer
+from dotenv import load_dotenv
+import motor.motor_asyncio
+from bson import ObjectId
 
 # Load the config.yaml file
 with open('config.yaml', 'r') as file:
@@ -6,35 +14,28 @@ with open('config.yaml', 'r') as file:
 
 development = config.get('development', False)
 
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class ChatRequest(BaseModel):
+    message: str
+    session_id: str
+
+class FeedbackRequest(BaseModel):
+    session_id: str
+    message: str
+    feedback: str
+
 if development:
 
-
-    import uuid, csv, os, uvicorn, sys, time
-    sys.path.append('models')
-    from fastapi import FastAPI, Request
-    from fastapi.middleware.cors import CORSMiddleware
-    from pydantic import BaseModel
-    from chatbot.agent.reactagent import answer
-
-    # FastAPI app
-    app = FastAPI()
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"], 
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
-    class ChatRequest(BaseModel):
-        message: str
-        session_id: str
-
-    class FeedbackRequest(BaseModel):
-        session_id: str
-        message: str
-        feedback: str
+   # FastAPI app
 
     @app.post("/api/chatbot")
     async def chatbot_endpoint(request: ChatRequest, request_obj: Request):
@@ -164,47 +165,13 @@ if development:
     if __name__ == "__main__":
         uvicorn.run(app, host="0.0.0.0", port=8000)
 
-
-
 else:
-    
-    import uuid, os, uvicorn, sys, time
-    from fastapi import FastAPI, Request
-    from fastapi.middleware.cors import CORSMiddleware
-    from pydantic import BaseModel
-    from chatbot.agent.reactagent import answer
-    import motor.motor_asyncio
-    from dotenv import load_dotenv
-    from bson import ObjectId
-
-    # Load environment variables from .env file
     load_dotenv()
-
-    # FastAPI app
-    app = FastAPI()
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"], 
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
     # MongoDB client setup
     MONGODB_CONNECTION_STRING = os.getenv("MONGODB_CONNECTION_STRING")
     client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_CONNECTION_STRING)
     db = client.chatbot
     chat_collection = db.chat_history
-
-    class ChatRequest(BaseModel):
-        message: str
-        session_id: str
-
-    class FeedbackRequest(BaseModel):
-        session_id: str
-        message: str
-        feedback: str
 
     def convert_objectid(data):
         if isinstance(data, list):
